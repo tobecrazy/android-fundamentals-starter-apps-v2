@@ -28,10 +28,9 @@ import android.widget.TextView;
  * SimpleCalc is the initial version of SimpleCalcTest.  It has
  * a number of intentional oversights for the student to debug/fix,
  * including input validation (no input, bad number format, div by zero)
- *
+ * <p>
  * In addition there is only one (simple) unit test in this app.
  * All the input validation and the unit tests are added as part of the lessons.
- *
  */
 public class MainActivity extends Activity {
 
@@ -119,6 +118,9 @@ public class MainActivity extends Activity {
                 result = String.valueOf(
                         mCalculator.mul(operandOne, operandTwo));
                 break;
+            case POW:
+                result = String.valueOf(mCalculator.pow(operandOne, operandTwo));
+                break;
             default:
                 result = getString(R.string.computationError);
                 break;
@@ -139,5 +141,12 @@ public class MainActivity extends Activity {
      */
     private static String getOperandText(EditText operandEditText) {
         return operandEditText.getText().toString();
+    }
+
+    /**
+     * @param view
+     */
+    public void onPow(View view) {
+        compute(Calculator.Operator.POW);
     }
 }
